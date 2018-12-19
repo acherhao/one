@@ -1,0 +1,37 @@
+
+.about{
+    flex: 1;
+    color: #333;
+    padding-bottom:0.8rem;
+}
+.about .download{
+    width: 100%;
+    height: 2.98rem;
+    padding-top:0.7rem; 
+    text-align: center;
+}
+.about .download .logo{
+    max-width: 1.2rem;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    border: 0;
+}
+.about .download .mobile-website{
+    display: block;
+    width: 100%;
+    height: 0.64rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0.4rem;
+    line-height: 0.64rem;
+    text-align: center;
+}
+.about .download .mobile-website>strong{
+    font-weight: bold;
+}
+.about .about-content{
+    height: auto;
+    font-size: 0.28rem;
+    line-height: 0.52rem;
+    margin: 0 33px;
+}
