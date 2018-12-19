@@ -1,11 +1,14 @@
-import React,{Component} from 'react';
+import React,{Component,Fragment} from 'react';
+
+import ReadUI from './children/readUI';
+import './style/read.css'
 
 class Read extends Component {
     render() {
         return (
-            <div >
-                Read
-            </div>
+            <Fragment >
+              <ReadUI />
+            </Fragment>
         )
     }
 }
