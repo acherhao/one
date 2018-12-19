@@ -12,14 +12,16 @@ class App extends Component {
   constructor () {
     super ();
     this.state = {
-      flag: true
+      flag: true,
+      navflag: true
     }
     this.handleNavList = this.handleNavList.bind(this);
     this.handleBox = this.handleBox.bind(this);
     this.handleSeek = this.handleSeek.bind(this);
+    this.handleBack = this.handleBack.bind(this);
   }
   render() {
-    let {flag} = this.state;
+    let {flag,navflag} = this.state;
     return (
       <Router>
         <div>
@@ -32,7 +34,7 @@ class App extends Component {
             <Route path="/about" component={About}/>
           </div>
           {/*蒙版*/}
-          <div className="boxmsg"></div>
+          <div className="boxmsg" style={{display:navflag?"none":"block"}}></div>
 
           <div className="nav" >
             <div className="nav-title">
@@ -46,7 +48,15 @@ class App extends Component {
                 <i className="iconfont">&#xe60b;</i>
               </span>
             </div>
-
+            {/*搜索框*/}
+            <div className="nav-seek" style={{display:navflag?"none":""}}>
+              <div className="nav-input">
+                <input type="text" placeholder="输入作者或者标题关键字"/>
+              </div>  
+              <span ><i className="iconfont ss">&#xe60b;</i></span>
+              {/*返回*/}
+              <span onClick={this.handleBack}><i className="iconfont">&#xe624;</i></span>
+            </div>  
 
             <div className={"nav-list"} style={{display:flag?"none":"block"}}> 
               <ul>
@@ -77,7 +87,14 @@ class App extends Component {
   }
   //展示搜索框
   handleSeek () {
-
+    this.setState({
+      navflag: false
+    })
+  }
+  handleBack () {
+    this.setState({
+      navflag: true
+    })
   }
 }
 
