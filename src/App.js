@@ -16,6 +16,7 @@ class App extends Component {
     }
     this.handleNavList = this.handleNavList.bind(this);
     this.handleBox = this.handleBox.bind(this);
+    this.handleSeek = this.handleSeek.bind(this);
   }
   render() {
     let {flag} = this.state;
@@ -30,23 +31,31 @@ class App extends Component {
             <Route path="/read" component={Read}/>
             <Route path="/about" component={About}/>
           </div>
-          
+          {/*蒙版*/}
+          <div className="boxmsg"></div>
 
           <div className="nav" >
             <div className="nav-title">
               <span className="nav-icon-left" 
-                    onClick={this.handleNavList}>小</span>
+                    onClick={this.handleNavList}>{/*点击显示左边导航列表*/}
+              <i className="iconfont">&#xe606;</i>     
+              </span>
               <p>一个阅读</p>
-              <span>xiao</span>
+              <span className="nav-icon-right"
+                    onClick={this.handleSeek}>{/*点击搜索*/}
+                <i className="iconfont">&#xe60b;</i>
+              </span>
             </div>
+
+
             <div className={"nav-list"} style={{display:flag?"none":"block"}}> 
               <ul>
-                <li><NavLink to="/home">图文</NavLink></li>
-                <li><NavLink to="/read">阅读</NavLink></li>
-                <li><NavLink to="/music">音乐</NavLink></li>
-                <li><NavLink to="/film">影视</NavLink></li>
-                <li><NavLink to="/download">App下载</NavLink></li>
-                <li><NavLink to="/about">关于</NavLink></li>
+                <li onClick={this.handleBox}><NavLink to="/home">图文</NavLink></li>
+                <li onClick={this.handleBox}><NavLink to="/read">阅读</NavLink></li>
+                <li onClick={this.handleBox}><NavLink to="/music">音乐</NavLink></li>
+                <li onClick={this.handleBox}><NavLink to="/film">影视</NavLink></li>
+                <li onClick={this.handleBox}><NavLink to="/download">App下载</NavLink></li>
+                <li onClick={this.handleBox}><NavLink to="/about">关于</NavLink></li>
               </ul>
             </div>
           </div>
@@ -54,6 +63,7 @@ class App extends Component {
       </Router>
     );
   }
+  //隐藏和显示左边导航列表的判断
   handleNavList (e) {
     e.stopPropagation();
     this.setState({
@@ -64,6 +74,10 @@ class App extends Component {
     this.setState({
       flag: true
     })
+  }
+  //展示搜索框
+  handleSeek () {
+
   }
 }
 
