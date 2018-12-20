@@ -2,9 +2,28 @@ import React,{Component} from 'react';
 
 export default class ReadUI extends Component {
     render () {
+        let {reads} = this.props;
         return (
             <div>
-                <div className="readCon">
+                {
+                    reads.map((item,index)=>{
+                        return <div className="readCon" 
+                                    key={item.content_id}
+                                    onClick={this.props.handleClickReadCon.bind(this,item.content_id)}
+                                >
+                                    <p className="readCon-top">{item.article_title}</p>
+                                    <h3 className="readCon-title">{item.title}</h3>
+                                    <p className="readCon-author">文／{item.user_name}</p>
+                                    <div className="readCon-img">
+                                        <img src={item.img_url}/>
+                                    </div>
+                                    <p className="readCon-text">{item.forward}</p>
+                                    <p className="readCon-time">{item.date}</p>
+                                </div>
+                                
+                    })
+                }
+                {/*<div className="readCon">
                     <p className="readCon-top">- STORY -</p>
                     <h3 className="readCon-title">没有赏味期限，只有来日方长</h3>
                     <p className="readCon-author">文／周源远</p>
@@ -15,16 +34,8 @@ export default class ReadUI extends Component {
                     <p className="readCon-time">2017/7/31</p>
                 </div>
 
-                <div className="readCon">
-                    <p className="readCon-top">- 阅读 -</p>
-                    <h3 className="readCon-title">如何避免被薛甄珠式的亲妈带进沟里？</h3>
-                    <p className="readCon-author">文／王嫣芸</p>
-                    <div className="readCon-img">
-                        <img src="http://image.wufazhuce.com/FtaNfz4r8AVOjVQdBEevobmNDvV4"/>
-                    </div>
-                    <p className="readCon-text">我们不太习惯残忍，所以更多时候选择躲在低质量的亲密关系里用“爱没有对错”这句话麻痹自己。 </p>
-                    <p className="readCon-time">2017/7/29</p>
-                </div>
+                
+                */}
             </div>    
         )
     }

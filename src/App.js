@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import {HashRouter as Router,Route,NavLink,Switch,Redirect} from 'react-router-dom'
+import { Provider } from "react-redux";
+import store from './store';
+
 
 import Bscroll from 'better-scroll';
 
@@ -25,6 +28,7 @@ class App extends Component {
   render() {
     let {flag,navflag} = this.state;
     return (
+      <Provider store={store}>
       <Router>
         <div>
           <div onClick={this.handleBox} className="conent-warp" ref="wrapper">
@@ -80,6 +84,7 @@ class App extends Component {
           </div>
         </div>
       </Router>
+      </Provider>
     );
   }
   //隐藏和显示左边导航列表的判断
@@ -109,7 +114,7 @@ class App extends Component {
   componentDidMount () {
     this.scroll = new Bscroll(this.refs.wrapper,{click:true});
   }
-
+  
 
 }
 
