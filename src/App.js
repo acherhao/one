@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import {HashRouter as Router,Route,NavLink} from 'react-router-dom'
+import {HashRouter as Router,Route,NavLink,Switch,Redirect} from 'react-router-dom'
+
+import Bscroll from 'better-scroll';
 
 import Home from './components/home/home.js'
 import Download from './components/download/download.js'
@@ -25,14 +27,20 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <div onClick={this.handleBox} className="conent-warp">
-            <Route path="/home" component={Home}/>
-            <Route path="/film" component={Film}/>
-            <Route path="/music" component={Music}/>
-            <Route path="/download" component={Download}/>
-            <Route path="/read" component={Read}/>
-            <Route path="/about" component={About}/>
+          <div onClick={this.handleBox} className="conent-warp" ref="wrapper">
+            <div>
+              <Switch>
+              <Route path="/home" component={Home}/>
+              <Route path="/film" component={Film}/>
+              <Route path="/music" component={Music}/>
+              <Route path="/download" component={Download}/>
+              <Route path="/read" component={Read}/>
+              <Route path="/about" component={About}/>
+              <Redirect path="/" to="/home" />
+              </Switch>
+            </div>
           </div>
+          
           {/*蒙版*/}
           <div className="boxmsg" style={{display:navflag?"none":"block"}}></div>
 
@@ -58,6 +66,7 @@ class App extends Component {
               <span onClick={this.handleBack}><i className="iconfont">&#xe624;</i></span>
             </div>  
 
+            {/*左边导航列表*/}
             <div className={"nav-list"} style={{display:flag?"none":"block"}}> 
               <ul>
                 <li onClick={this.handleBox}><NavLink to="/home">图文</NavLink></li>
@@ -96,6 +105,12 @@ class App extends Component {
       navflag: true
     })
   }
+  //用better-scroll实现页面拖动，有弹性的效果
+  componentDidMount () {
+    this.scroll = new Bscroll(this.refs.wrapper,{click:true});
+  }
+
+
 }
 
 export default App;

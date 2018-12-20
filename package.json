@@ -23,6 +23,12 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "react-router-dom": "^4.3.1"
+    "better-scroll": "^1.13.2",
+    "http-proxy-middleware": "^0.19.1",
+    "react-redux": "^6.0.0",
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.1",
+    "redux-promise-middleware": "^5.1.1",
+    "whatwg-fetch": "^3.0.0"
   }
 }
